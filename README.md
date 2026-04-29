@@ -4,6 +4,7 @@
 
 #### This project aims to practice student on how to: 
 1.) Identify digital filter design specifications based on real-world problems.
+
 2.) Design digital filter/s to achieve requirements
 
 #### Notes:
