@@ -13,14 +13,15 @@ clear;
 addfilepath();
 
 % Add the filename of clean speech into clean_file
-clean_file = input("Filename for clean vocals: ", "s");
+clean_file = "Vitas - 7th Element.mp3";
 
 % Add the filename of distorted speech into distort_file
-distort_file = input("Filename for distorted vocals: ", "s");
+distort_file = "set1_A.mp3";
 
 %% Load clean speech and raw speech
-[clean_speech, fs1] = audioread(clean_file);
-[distort_speech, fs2] = audioread(distort_file);
+%[clean_speech, fs1, distort_speech, fs2] = read_speech(clean_file, distort_file);
+clean_speech = audioread(clean_file);
+distort_speech = audioread(distort_file);
 
 clean_speech = clean_speech(:,1);
 distort_speech = distort_speech(:,1);
@@ -57,6 +58,16 @@ function addfilepath()
     addpath(genpath(pwd));
     addpath(fullfile(pwd, 'process'));
     addpath(fullfile(pwd, 'data'));
-    addpath(fullfile(pwd, 'data/clean'));
-    addpath(fullfile(pwd, 'data/distort'));
+    addpath(fullfile(pwd, 'data/'))
+end
+
+% Loads the clean speech and distorted speech
+function [y1, f1, y2, f2] = read_speech(clean_file, distort_file)
+    %clean_file = 'data/clean' + clean_file;
+    %distort_file = 'data/distort' + distort_file;
+    %clean_filepath = fullfile(pwd, clean_file);
+    %distort_filepath = fullfile(pwd, distort_file);
+
+    [y1, f1] = audioread(clean_file);
+    [y2, f2] = audioread(distort_file);
 end
