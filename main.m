@@ -25,6 +25,12 @@ distort_file = input("Filename for distorted vocals: ", "s");
 clean_speech = clean_speech(:,1);
 distort_speech = distort_speech(:,1);
 
+if (length(clean_speech) > length(distort_speech))
+    clean_speech = clean_speech(1:length(distort_speech));
+else
+    distort_speech = distort_speech(1:length(clean_speech));
+end
+
 % Compute for Evaluation Metrics before filter
 [snr_before, before_clean_signal_power, before_process_signal_power] = snr(clean_speech, distort_speech);
 mse_before = mse(clean_speech, distort_speech);
